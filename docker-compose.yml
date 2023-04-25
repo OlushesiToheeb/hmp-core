@@ -1,0 +1,11 @@
+services:
+    hmp-core:
+        container_name: hmp-core
+        build:
+            context: .
+            dockerfile: ./src/Dockerfile
+        restart: always
+        volumes:
+            - ./src:/var/www/html
+        ports:
+            - 9000:80
