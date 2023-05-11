@@ -19,7 +19,8 @@ RUN a2enmod rewrite
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 #Composer
-COPY --from=composer:latest usr/bin/composer usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 
 # Add and Enable PHP-PDO Extenstions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
