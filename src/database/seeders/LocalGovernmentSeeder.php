@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders\LandLord;
+namespace Database\Seeders;
 
-use App\Models\Landlords\LocalGovernment;
+use App\Models\LocalGovernment;
 use Illuminate\Database\Seeder;
 
 class LocalGovernmentSeeder extends Seeder

@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders\LandLord;
+namespace Database\Seeders;
 
-use App\Models\Landlords\Country;
+use App\Models\Country;
 use Illuminate\Database\Seeder;
 
 class CountrySeeder extends Seeder
