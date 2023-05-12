@@ -20,4 +20,9 @@ class Controller extends BaseController
     {
         return (new Helpers())->errorResponder($data, $statusCode, $message, $header);
     }
+
+    protected function successResponder($data, $statusCode = 200, $message = 'Action was Succesful', $header = [])
+    {
+        return (new Helpers())->successResponder($data, $statusCode, $message, $header);
+    }
 }

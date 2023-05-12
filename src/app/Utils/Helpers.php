@@ -52,4 +52,22 @@ class Helpers
 
         return response()->json($result, $statusCode, $headers);
     }
+
+    /**
+     * @param $data
+     * @param int $statusCode
+     * @param string $message
+     * @param array $headers
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function successResponder($data, $status, $message = 'Action was successfull')
+    {
+        $result = [
+            'success' =>  true,
+            'data' => $data,
+            'message' => $message
+        ];
+
+        return response()->json($result, $status);
+    }
 }

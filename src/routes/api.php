@@ -15,14 +15,11 @@ use App\Http\Controllers\AuthenticationController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 Route::get('/health', 'HealthCheckController@index');
 
 
-
 Route::group(['prefix' => 'users'], function () {
     Route::post('/login', [AuthenticationController::class, 'loginUser']);
+    Route::post('/register', [AuthenticationController::class, 'registerUser']);
 });
