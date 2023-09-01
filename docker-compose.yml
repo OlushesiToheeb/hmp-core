@@ -1,3 +1,6 @@
+networks:
+    hmp-network:
+
 services:
     hmp-core:
         container_name: hmp-core
@@ -8,5 +11,7 @@ services:
         volumes:
             - ./src:/var/www/html
             - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+        networks:
+            - hmp-network
         ports:
             - 9000:80

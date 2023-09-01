@@ -28,7 +28,6 @@ class AuthenticationController extends Controller
                 'token' => $token,
                 'type' => 'bearer',
                 'expires_in' => auth()->factory()->getTTL() * 60,
-
             ]
         ], 200);
     }
@@ -45,7 +44,7 @@ class AuthenticationController extends Controller
                 'email' => $payload['email'],
                 'phone' => $payload['phone'],
                 'password' => bcrypt($payload['password']),
-            ])->assignRole($payload['user_type']);
+            ])->assignRole($payload['user_type'])->sendEmailVerificationNotification();
 
             return $this->successResponder($user, 200, 'Registration Successful');
         } catch (\Exception $e) {

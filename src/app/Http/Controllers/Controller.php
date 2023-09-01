@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    protected function responder($data, $statusCode = 200, $message = null, $header = [])
+    protected function responder($data = null, $statusCode = 200, $message = null, $header = [])
     {
         return (new Helpers())->responder($data, $statusCode, $message, $header);
     }

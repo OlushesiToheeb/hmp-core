@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\AuthenticationController;
 
 /*
@@ -22,4 +23,6 @@ Route::get('/health', 'HealthCheckController@index');
 Route::group(['prefix' => 'users'], function () {
     Route::post('/login', [AuthenticationController::class, 'loginUser']);
     Route::post('/register', [AuthenticationController::class, 'registerUser']);
+    Route::get('email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
+    Route::get('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 });
