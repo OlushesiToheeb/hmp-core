@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Auth\LoginRequest;
-use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 
 class AuthenticationController extends Controller
 {
@@ -16,20 +17,23 @@ class AuthenticationController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
+
         if (!$token = auth()->attempt($credentials)) {
             return $this->errorResponder(null, 401, 'invalid login credentials');
         }
 
-        $user = Auth::user();
-        return response()->json([
+        $user = User::find(Auth::user()->id);
+        $data = [
             'status' => 'success',
             'user' => $user,
+            "role" => (new UserController())->getUserRole($user),
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
                 'expires_in' => auth()->factory()->getTTL() * 60,
             ]
-        ], 200);
+        ];
+        return response()->json($data, 200);
     }
 
 
