@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class HealthProvider extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded = [
+        'id'
+    ];
 
     protected $casts = [
         'qualifications' => 'array', // Will convarted to (Array)
@@ -16,6 +18,6 @@ class HealthProvider extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

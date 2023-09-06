@@ -11,8 +11,6 @@ use App\Http\Requests\Auth\RegisterRequest;
 
 class AuthenticationController extends Controller
 {
-
-
     public function loginUser(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');

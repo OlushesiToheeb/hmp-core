@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name')->nullable()->index();
             $table->string('username', 191);
             $table->string('email')->unique();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->date('date_of_birth')->nullable();
             $table->string('phone', 50)->nullable();
             $table->string('gender', 225)->nullable();
